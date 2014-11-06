@@ -1,6 +1,11 @@
 # Fog::Voxel
 
-TODO: Write a gem description
+Module for the 'fog' gem to support Voxel
+
+## Help Needed
+
+This gem needs a maintainer. If you want to work on it, please contact
+[@geemus](mailto:geemus@gmail.com) or [@plribeiro3000](mailto:plribeiro3000@gmail.com)
 
 ## Installation
 
@@ -17,10 +22,6 @@ And then execute:
 Or install it yourself as:
 
     $ gem install fog-voxel
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Contributing
 
