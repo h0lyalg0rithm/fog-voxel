@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "turn"
   spec.add_development_dependency "pry"
 
-  if RUBY_VERSION.to_f >= 1.9
+  if RUBY_VERSION.to_f > 1.9
     spec.add_development_dependency "coveralls"
     spec.add_development_dependency "rubocop"
   end
