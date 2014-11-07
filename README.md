@@ -1,5 +1,7 @@
 # Fog::Voxel
 
+[![Build Status](https://travis-ci.org/fog/fog-voxel.svg?branch=master)](https://travis-ci.org/fog/fog-voxel) [![Dependency Status](https://gemnasium.com/fog/fog-voxel.svg)](https://gemnasium.com/fog/fog-voxel) [![Coverage Status](https://img.shields.io/coveralls/fog/fog-voxel.svg)](https://coveralls.io/r/fog/fog-voxel) [![Code Climate](https://codeclimate.com/github/fog/fog-voxel.png)](https://codeclimate.com/github/fog/fog-voxel)
+
 Module for the 'fog' gem to support Voxel
 
 ## Help Needed
