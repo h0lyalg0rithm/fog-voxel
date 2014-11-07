@@ -4,10 +4,8 @@ matrix:
       gemfile: gemfiles/Gemfile.1.9.2-
     - rvm: 1.9.2
       gemfile: gemfiles/Gemfile.1.9.2-
-      env: COVERAGE=true
     - rvm: 1.9.3
       gemfile: gemfiles/Gemfile.1.9.3+
-      env: COVERAGE=true
     - rvm: 2.0.0
       gemfile: gemfiles/Gemfile.1.9.3+
       env: COVERAGE=true
