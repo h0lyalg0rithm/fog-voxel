@@ -8,12 +8,10 @@ matrix:
       gemfile: gemfiles/Gemfile.1.9.3+
     - rvm: 2.0.0
       gemfile: gemfiles/Gemfile.1.9.3+
-      env: COVERAGE=true
-    - rvm: 2.1.1
+    - rvm: 2.1.4
       gemfile: gemfiles/Gemfile.1.9.3+
       env: COVERAGE=true
     - rvm: ree
       gemfile: gemfiles/Gemfile.1.9.2-
     - rvm: jruby
       gemfile: gemfiles/Gemfile.1.9.3+
-      env: COVERAGE=true
