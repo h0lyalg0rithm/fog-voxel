@@ -11,7 +11,7 @@ if ENV['COVERAGE']
   end
 end
 
-require File.join(File.dirname(__FILE__), '../lib/fog/voxel')
+require File.expand_path(File.join(File.dirname(__FILE__), '../lib/fog/voxel'))
 
 Coveralls.wear! if ENV['COVERAGE']
 
