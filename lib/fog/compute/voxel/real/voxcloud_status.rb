@@ -2,7 +2,7 @@ module Fog
   module Compute
     class Voxel
       class Real
-        require 'fog/voxel/parsers/compute/voxcloud_status'
+        require 'fog/voxel/parsers/voxel/voxcloud_status'
 
         def voxcloud_status(device_id = nil)
           options = {

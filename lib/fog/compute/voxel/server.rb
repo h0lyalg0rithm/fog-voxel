@@ -1,5 +1,3 @@
-require 'fog/compute/models/server'
-
 module Fog
   module Compute
     class Voxel

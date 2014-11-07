@@ -1,6 +1,3 @@
-require 'fog/core/collection'
-require 'fog/voxel/models/compute/server'
-
 module Fog
   module Compute
     class Voxel
