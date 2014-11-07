@@ -1,6 +1,19 @@
 require 'excon'
 require 'fog/core'
-require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'fog', 'voxel'))
+
+if ENV['COVERAGE']
+  require 'coveralls'
+  require 'simplecov'
+
+  SimpleCov.start do
+    add_filter '/spec/'
+    add_filter '/test/'
+  end
+end
+
+require File.join(File.dirname(__FILE__), '../lib/fog/voxel')
+
+Coveralls.wear! if ENV['COVERAGE']
 
 Excon.defaults.merge!(:debug_request => true, :debug_response => true)
 
