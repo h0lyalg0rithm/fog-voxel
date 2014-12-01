@@ -1,5 +1,4 @@
 require 'excon'
-require 'fog/core'
 
 if ENV['COVERAGE']
   require 'coveralls'
