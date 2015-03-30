@@ -1,23 +1,21 @@
-require 'fog/voxel'
-
 module Fog
   module Compute
     class Voxel < Fog::Service
-      autoload :Image, 'fog/compute/voxel/image'
-      autoload :Images, 'fog/compute/voxel/images'
-      autoload :Server, 'fog/compute/voxel/server'
-      autoload :Servers, 'fog/compute/voxel/servers'
+      autoload :Image, File.expand_path("../voxel/models/image", __FILE__)
+      autoload :Images, File.expand_path("../voxel/models/images", __FILE__)
+      autoload :Server, File.expand_path("../voxel/models/server", __FILE__)
+      autoload :Servers, File.expand_path("../voxel/models/servers", __FILE__)
 
       requires :voxel_api_key, :voxel_api_secret
       recognizes :host, :port, :scheme, :persistent
 
-      model_path 'fog/compute/voxel'
+      model_path "fog/compute/voxel/models"
       model       :image
       collection  :images
       model       :server
       collection  :servers
 
-      request_path 'fog/compute/voxel/real'
+      request_path "fog/compute/voxel/requests"
       request :images_list
       request :devices_list
       request :devices_power
@@ -35,21 +33,22 @@ module Fog
                 :servers => [],
                 :statuses => {},
                 :images  => [
-                    {'id' => 1,   'name' => "CentOS 4, 32-bit, base install"},
-                    {'id' => 2,   'name' => "CentOS 4, 64-bit, base install"},
-                    {'id' => 3,   'name' => "CentOS 5, 32-bit, base install"},
-                    {'id' => 4,   'name' => "CentOS 5, 64-bit, base install"},
-                    {'id' => 7,   'name' => "Fedora 10, 32-bit, base install"},
-                    {'id' => 8,   'name' => "Fedora 10, 64-bit, base install"},
-                    {'id' => 10,  'name' => "OpenSUSE 11, 64-bit, base install"},
-                    {'id' => 11,  'name' => "Debian 5.0 \"lenny\", 32-bit, base install"},
-                    {'id' => 12,  'name' => "Debian 5.0 \"lenny\", 64-bit, base install"},
-                    {'id' => 13,  'name' => "Ubuntu 8.04 \"Hardy\", 32-bit, base install"},
-                    {'id' => 14,  'name' => "Ubuntu 8.04 \"Hardy\", 64-bit, base install"},
-                    {'id' => 15,  'name' => "Voxel Server Environment (VSE), 32-bit, base install"},
-                    {'id' => 16,  'name' => "Voxel Server Environment (VSE), 64-bit, base install"},
-                    {'id' => 32,  'name' => "Pantheon Official Mercury Stack for Drupal (based on VSE/64)"},
-                    {'id' => 55,  'name' => "Ubuntu 10.04 \"Lucid\", 64-bit, base install"} ]
+                  { "id" => 1, "name" => "CentOS 4, 32-bit, base install" },
+                  { "id" => 2, "name" => "CentOS 4, 64-bit, base install" },
+                  { "id" => 3, "name" => "CentOS 5, 32-bit, base install" },
+                  { "id" => 4, "name" => "CentOS 5, 64-bit, base install" },
+                  { "id" => 7, "name" => "Fedora 10, 32-bit, base install" },
+                  { "id" => 8, "name" => "Fedora 10, 64-bit, base install" },
+                  { "id" => 10, "name" => "OpenSUSE 11, 64-bit, base install" },
+                  { "id" => 11, "name" => "Debian 5.0 \"lenny\", 32-bit, base install" },
+                  { "id" => 12, "name" => "Debian 5.0 \"lenny\", 64-bit, base install" },
+                  { "id" => 13, "name" => "Ubuntu 8.04 \"Hardy\", 32-bit, base install" },
+                  { "id" => 14, "name" => "Ubuntu 8.04 \"Hardy\", 64-bit, base install" },
+                  { "id" => 15, "name" => "Voxel Server Environment (VSE), 32-bit, base install" },
+                  { "id" => 16, "name" => "Voxel Server Environment (VSE), 64-bit, base install" },
+                  { "id" => 32, "name" => "Pantheon Official Mercury Stack for Drupal (based on VSE/64)" },
+                  { "id" => 55, "name" => "Ubuntu 10.04 \"Lucid\", 64-bit, base install" }
+                ]
             }
           end
         end
@@ -75,8 +74,8 @@ module Fog
         include Collections
 
         def initialize(options = {})
-          require 'time'
-          require 'digest/md5'
+          require "time"
+          require "digest/md5"
 
           @voxel_api_key = options[:voxel_api_key]
           @voxel_api_secret = options[:voxel_api_secret]
@@ -84,7 +83,7 @@ module Fog
           @connection_options = options[:connection_options] || {}
           @host               = options[:host]    || "api.voxel.net"
           @port               = options[:port]    || 443
-          @scheme             = options[:scheme]  || 'https'
+          @scheme             = options[:scheme]  || "https"
           @persistent         = options[:persistent] || false
 
           @connection_options[:ssl_verify_peer] = false
@@ -103,7 +102,7 @@ module Fog
                 :parser => parser,
                 :path   => "/version/1.0/"
             )
-            unless data.body['stat'] == 'ok'
+            unless data.body["stat"] == "ok"
               raise Fog::Compute::Voxel::Error, "#{data.body['err']['msg']}"
             end
             data

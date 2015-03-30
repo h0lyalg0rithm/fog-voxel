@@ -2,12 +2,10 @@ module Fog
   module Compute
     class Voxel
       class Real
-        require 'fog/voxel/parsers/voxel/voxcloud_status'
-
         def voxcloud_status(device_id = nil)
           options = {
             :parser     => Fog::Parsers::Compute::Voxel::VoxcloudStatus.new,
-            :verbosity  => 'compact'
+            :verbosity  => "compact"
           }
 
           unless device_id.nil?

@@ -9,10 +9,10 @@ module Fog
         attribute :image_id
         attribute :facility
         attribute :disk_size
-        attribute :ip_assignments, :aliases => 'ipassignments'
+        attribute :ip_assignments, :aliases => "ipassignments"
 
         def initialize(attributes={})
-          self.image_id ||= '55' # Ubuntu 10.04 LTS 64bit
+          self.image_id ||= "55" # Ubuntu 10.04 LTS 64bit
           super
         end
 
@@ -28,15 +28,15 @@ module Fog
         end
 
         def ready?
-          self.state == 'SUCCEEDED'
+          state == "SUCCEEDED"
         end
 
         def private_ip_address
-          ip_assignments.select {|ip_assignment| ip_assignment['type'] == 'internal'}.first
+          ip_assignments.select { |ip_assignment| ip_assignment["type"] == "internal" }.first
         end
 
         def public_ip_address
-          ip_assignments.select {|ip_assignment| ip_assignment['type'] == 'external'}.first
+          ip_assignments.select { |ip_assignment| ip_assignment["type"] == "external" }.first
         end
 
         def reboot
@@ -46,11 +46,11 @@ module Fog
         end
 
         def state
-          @state ||= service.voxcloud_status(id).body['devices'].first['status']
+          @state ||= service.voxcloud_status(id).body["devices"].first["status"]
         end
 
         def save
-          raise Fog::Errors::Error.new('Resaving an existing object may create a duplicate') if persisted?
+          raise Fog::Errors::Error.new("Resaving an existing object may create a duplicate") if persisted?
           requires :name, :image_id, :processing_cores, :facility, :disk_size
 
           data = service.voxcloud_create({
@@ -61,7 +61,7 @@ module Fog
             :processing_cores => processing_cores
           }).body
 
-          merge_attributes(data['device'])
+          merge_attributes(data["device"])
 
           true
         end

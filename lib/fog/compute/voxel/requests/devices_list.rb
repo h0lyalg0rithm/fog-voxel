@@ -2,12 +2,10 @@ module Fog
   module Compute
     class Voxel
       class Real
-        require 'fog/voxel/parsers/voxel/devices_list'
-
         def devices_list(device_id = nil)
           options = {
             :parser     => Fog::Parsers::Compute::Voxel::DevicesList.new,
-            :verbosity  => 'normal'
+            :verbosity  => "normal"
           }
 
           unless device_id.nil?
