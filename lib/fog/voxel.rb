@@ -1,13 +1,13 @@
-require 'fog/voxel/version'
-require 'fog/core'
-require 'fog/xml'
-require 'digest/md5'
+require "fog/core"
+require "fog/xml"
+require "digest/md5"
+require File.expand_path("../voxel/version", __FILE__)
 
 module Fog
   module Voxel
     extend Fog::Provider
 
-    service(:compute, 'Compute')
+    service(:compute, "Compute")
 
     def self.create_signature(secret, options)
       to_sign = options.keys.map { |k| k.to_s }.sort.map { |k| "#{k}#{options[k.to_sym]}" }.join("")
@@ -16,10 +16,10 @@ module Fog
   end
 
   module Compute
-    autoload :Voxel, 'fog/compute/voxel'
+    autoload :Voxel, File.expand_path("../compute/voxel", __FILE__)
   end
 
   module Parsers
-    autoload :Compute, 'fog/parsers/compute'
+    autoload :Compute, File.expand_path("../parsers/compute", __FILE__)
   end
 end

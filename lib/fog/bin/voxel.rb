@@ -14,7 +14,7 @@ class Voxel < Fog::Bin
         hash[key] = case key
                       when :compute
                         Fog::Logger.warning("Voxel[:compute] is not recommended, use Compute[:voxel] for portability")
-                        Fog::Compute.new(:provider => 'Voxel')
+                        Fog::Compute.new(:provider => "Voxel")
                       else
                         raise ArgumentError, "Unrecognized service: #{key.inspect}"
                     end
